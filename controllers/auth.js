@@ -1,9 +1,10 @@
 const bcrypt = require('bcryptjs');
 const { generateJwt } = require('../helpers/jwt');
+const {response} = require('express');
 const User = require('../models/User');
 
 //Registro de Usuario
-const createUser = async (req, res = express.response) => {
+const createUser = async (req, res = response) => {
     const { email, password } = req.body;
     try {
 
@@ -21,11 +22,12 @@ const createUser = async (req, res = express.response) => {
         const salt = bcrypt.genSaltSync(parseInt(process.env.SALT));
         user.password = bcrypt.hashSync(password, salt);
 
-
+        console.log(user);
         await user.save();
+        console.log(user);
         //generate jwt
         const token = await generateJwt(user.id, user.name);
-
+        console.log(token);
 
         res.status(201).json({
             ok: true,
@@ -45,7 +47,7 @@ const createUser = async (req, res = express.response) => {
 
 
 //Login de Usuario
-const logInUser = async (req, res = express.response) => {
+const logInUser = async (req, res = response) => {
     const { email, password } = req.body;
 
     try {
@@ -93,10 +95,10 @@ const logInUser = async (req, res = express.response) => {
 
 };
 
-const reNew = async(req, res = express.response) => {
+const reNew = async(req, res = response) => {
 
-    const uid = req.uid;
-    const name = req.name;
+    const {uid,name} = req;
+    console.log(req);
 
     const token = await generateJwt(uid, name);
     res.json({

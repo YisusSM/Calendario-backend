@@ -16,7 +16,7 @@ const dateStartAndEnd = (value, { req }) => {
     const { start, end } = req.body;
     const mStart = moment(start);
     const mEnd = moment(end);
-    console.log(mStart,mEnd);
+    // console.log(mStart,mEnd);
     if (mStart.isBefore(mEnd)) {
         return true;
     } else {

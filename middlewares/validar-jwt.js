@@ -26,7 +26,7 @@ const validateJWT = (req, res = express.response, next) => {
         req.uid = payload.uid;
         req.name = payload.name;
 
-        console.log(payload);
+        // console.log(payload);
 
 
     } catch (error) {
