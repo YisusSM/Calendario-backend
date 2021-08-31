@@ -13,7 +13,7 @@ const createUser = async (req, res = response) => {
             return res.status(400).json({
                 ok: false,
                 msg: 'email already in use'
-            })
+            });
 
         }
 
@@ -26,6 +26,7 @@ const createUser = async (req, res = response) => {
         await user.save();
         console.log(user);
         //generate jwt
+        
         const token = await generateJwt(user.id, user.name);
         console.log(token);
 
@@ -34,7 +35,7 @@ const createUser = async (req, res = response) => {
             uid: user.id,
             name: user.name,
             token
-        });
+        })
 
     } catch (err) {
         console.log(err);
@@ -53,6 +54,7 @@ const logInUser = async (req, res = response) => {
     try {
 
         const user = await User.findOne({ email });
+        
         if (!user) {
             return res.status(400).json({
                 ok: false,
@@ -70,7 +72,8 @@ const logInUser = async (req, res = response) => {
         }
 
         //Generar JWT
-        const token = await generateJwt(user.uid, user.name);
+        
+        const token = await generateJwt(user.id, user.name);
 
         res.json({
             ok: true,
@@ -98,7 +101,7 @@ const logInUser = async (req, res = response) => {
 const reNew = async(req, res = response) => {
 
     const {uid,name} = req;
-    console.log(req);
+
 
     const token = await generateJwt(uid, name);
     res.json({
