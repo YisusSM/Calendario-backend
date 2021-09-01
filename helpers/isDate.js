@@ -11,20 +11,20 @@ const isDate = (value, { req, location, path }) => {
 }
 
 
-const dateStartAndEnd = (value, { req }) => {
+// const dateStartAndEnd = (value, { req }) => {
     
-    const { start, end } = req.body;
-    const mStart = new Date(start).toLocaleString();
-    const mEnd = new Date(end).toLocaleString();
+//     const { start, end } = req.body;
+//     const mStart = new Date(start).toLocaleString();
+//     const mEnd = new Date(end).toLocaleString();
   
-    if (mStart < mEnd) {
-        return true;
-    } else {
-        return false;
-    }
+//     if (mStart < mEnd) {
+//         return true;
+//     } else {
+//         return false;
+//     }
 
-}
+// }
 
-module.exports = { isDate, dateStartAndEnd };
+module.exports = { isDate };
 
 
