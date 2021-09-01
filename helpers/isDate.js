@@ -14,10 +14,10 @@ const isDate = (value, { req, location, path }) => {
 const dateStartAndEnd = (value, { req }) => {
     
     const { start, end } = req.body;
-    const mStart = moment(start);
-    const mEnd = moment(end);
-     console.log(mStart.isBefore(mEnd));
-    if (mStart.isBefore(mEnd)) {
+    const mStart = new Date(start).toLocaleString();
+    const mEnd = new Date(end).toLocaleString();
+  
+    if (mStart < mEnd) {
         return true;
     } else {
         return false;
