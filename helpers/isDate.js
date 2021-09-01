@@ -11,20 +11,8 @@ const isDate = (value, { req, location, path }) => {
 }
 
 
-const dateStartAndEnd = (value, { req }) => {
-    
-    const { start, end } = req.body;
-    const mStart = moment(start);
-    const mEnd = moment(end);
-    // console.log(mStart,mEnd);
-    if (mStart.isBefore(mEnd)) {
-        return true;
-    } else {
-        return false;
-    }
 
-}
 
-module.exports = { isDate, dateStartAndEnd };
+module.exports = { isDate };
 
 
