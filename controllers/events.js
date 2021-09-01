@@ -1,6 +1,7 @@
 const { body } = require('express-validator');
 const Event = require('../models/Event');
 
+
 const getEvent = async (req, res = express.response) => {
 
     const events = await Event.find()
@@ -42,7 +43,7 @@ const updateEvent = async (req, res = express.response) => {
 
     const eventId = req.params.id;
     const uid = req.uid;
-
+    
     try {
         const event = await Event.findById(eventId);
         if (!event) {

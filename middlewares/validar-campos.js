@@ -16,24 +16,8 @@ const validarCampos = (req, res = response, next) => {
     next();
 }
 
-const dateStartAndEnd = (value, { req }) => {
-    
-    const { start, end } = req.body;
-    const mStart = moment(start);
-    const mEnd = moment(end);
-     console.log(mStart,mEnd);
-    if (mStart.isBefore(mEnd)) {
-        return true;
-    } else {
-        return  res.status(400).json({
-            ok: false,
-            errors: 'fecha de inicio tiene que ser menor a la de fin'
-        });
-    }
 
-}
 
 module.exports = {
-    validarCampos,
-    dateStartAndEnd
+    validarCampos
 }
