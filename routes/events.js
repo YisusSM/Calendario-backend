@@ -22,7 +22,7 @@ router.get('/', getEvent);
 router.post('/', [
     check('title', 'el titulo es obligatorio').not().isEmpty(),
     check('start', 'Fecha de inicio obligatoria').custom(isDate),
-    check('end', 'Fecha fin no puede ser menor a la de inicio').custom(isDate && dateStartAndEnd),
+    check('end', 'Fecha fin no puede ser menor a la de inicio').custom(isDate),
     validarCampos
 ], createEvent);
 
