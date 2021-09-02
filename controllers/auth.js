@@ -50,7 +50,7 @@ const createUser = async (req, res = response) => {
 //Login de Usuario
 const logInUser = async (req, res = response) => {
     const { email, password } = req.body;
-
+    console.log("entra");
     try {
 
         const user = await User.findOne({ email });

@@ -3,7 +3,7 @@
 */
 
 const { Router } = require('express');
-const { validarCampos, emailIsRegister} = require('../middlewares/validar-campos');
+const { validarCampos} = require('../middlewares/validar-campos');
 const { check } = require('express-validator');
 const { createUser,logInUser,reNew:revalidarToken } = require('../controllers/auth');
 const { validateJWT } = require('../middlewares/validar-jwt');
